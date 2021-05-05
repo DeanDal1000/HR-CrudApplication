@@ -7,6 +7,7 @@ function App() {
   const [surname, setSurname] = useState('');
   const [date, setDate] = useState('');
   const [deaths, setDeaths] = useState('');
+  const [resu, setResu] = useState('');
   const [age, setAge] = useState(0);
   const [position, setPosition] = useState(0);
   const [wage, setWage] = useState(0);
@@ -38,6 +39,11 @@ function App() {
           <input
             type="text"
             onChange={(event) => setDeaths(event.target.value)}
+          />
+          <label>Resurrections</label>
+          <input
+            type="text"
+            onChange={(event) => setResu(event.target.value)}
           />
           <label>Age</label>
           <input
