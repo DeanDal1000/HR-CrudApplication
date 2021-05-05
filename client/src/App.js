@@ -1,19 +1,33 @@
 import React, { useState } from 'react';
+import Axios from 'axios';
 //Components
 import { Container, Layout } from './styles/Form.element';
 
 function App() {
   const [firstname, setFirstname] = useState('');
   const [surname, setSurname] = useState('');
-  const [date, setDate] = useState('');
   const [deaths, setDeaths] = useState('');
-  const [resu, setResu] = useState('');
+  const [resurrections, setResurrections] = useState('');
   const [age, setAge] = useState(0);
+  const [experience, setExperience] = useState('');
   const [position, setPosition] = useState(0);
   const [wage, setWage] = useState(0);
+  const [country, setCountry] = useState('');
 
-  const displayInfo = () => {
-    console.log(firstname + surname + date + age + position + wage);
+  const addEmployee = () => {
+    Axios.post('http://localhost:5000/create', {
+      firstname: firstname,
+      surname: surname,
+      age: age,
+      position: position,
+      wage: wage,
+      country: country,
+      deaths: deaths,
+      resurrections: resurrections,
+      experience: experience,
+    }).then(() => {
+      console.log('sucess');
+    });
   };
 
   return (
@@ -30,10 +44,11 @@ function App() {
             type="text"
             onChange={(event) => setSurname(event.target.value)}
           />
-          <label>D.O.B</label>
+
+          <label>Country</label>
           <input
             type="text"
-            onChange={(event) => setDate(event.target.value)}
+            onChange={(event) => setCountry(event.target.value)}
           />
           <label>Deaths</label>
           <input
@@ -43,12 +58,17 @@ function App() {
           <label>Resurrections</label>
           <input
             type="text"
-            onChange={(event) => setResu(event.target.value)}
+            onChange={(event) => setResurrections(event.target.value)}
           />
           <label>Age</label>
           <input
             type="number"
             onChange={(event) => setAge(event.target.value)}
+          />
+          <label>Experience</label>
+          <input
+            type="text"
+            onChange={(event) => setExperience(event.target.value)}
           />
           <label>Position</label>
           <input
@@ -57,7 +77,7 @@ function App() {
           />
           <label onChange={(event) => setWage(event.target.value)}>Wage</label>
           <input type="text" />
-          <button onClick={displayInfo}>Submit</button>
+          <button onClick={addEmployee}>Submit</button>
         </Layout>
       </Container>
     </div>

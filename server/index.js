@@ -1,15 +1,18 @@
 const express = require('express');
 
 const app = express();
-
 const port = 5000;
 
+const cors = require('cors');
 const mysql = require('mysql');
+
+app.use(cors());
+app.use(express.json());
 
 const db = mysql.createConnection({
   user: 'root',
   host: 'localhost',
-  password: '',
+  password: 'dean2705',
   database: 'hrSystem',
 });
 
@@ -17,25 +20,26 @@ app.post('/create', (req, res) => {
   const firstname = req.body.firstname;
   const surname = req.body.surname;
   const age = req.body.age;
-  const dob = req.body.dob;
+  const position = req.body.position;
+  const wage = req.body.wage;
   const country = req.body.country;
   const deaths = req.body.deaths;
   const resurrections = req.body.resurrections;
-  const wage = req.body.wage;
-  const position = req.body.position;
+  const experience = req.body.experience;
 
   db.query(
-    'INSERT INTO employees (firstname, surname, age, dob, country, deaths, resurrections, wage, position) VALUES (?,?,?,?,?,?,?,?,?)',
+    'INSERT INTO employees (firstname, surname, age, position, wage, country, deaths, resurrections, experience) VALUES (?,?,?,?,?,?,?,?,?)',
     [
       firstname,
       surname,
       age,
-      dob,
+      position,
+      wage,
       country,
       deaths,
       resurrections,
-      wage,
-      position,
+      experience,
+      ,
     ],
     (error, result) => {
       if (error) {
