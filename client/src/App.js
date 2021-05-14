@@ -79,6 +79,9 @@ function App() {
           <input type="text" />
           <button onClick={addEmployee}>Submit</button>
         </Layout>
+        <div className="buttonContainer">
+          <button onClick={addEmployee}>Show Employees</button>
+        </div>
       </Container>
     </div>
   );
