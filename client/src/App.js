@@ -13,6 +13,7 @@ function App() {
   const [position, setPosition] = useState(0);
   const [wage, setWage] = useState(0);
   const [country, setCountry] = useState('');
+  const [employee, setEmployee] = useState([]);
 
   const addEmployee = () => {
     Axios.post('http://localhost:5000/create', {
@@ -26,7 +27,26 @@ function App() {
       resurrections: resurrections,
       experience: experience,
     }).then(() => {
-      console.log('sucess');
+      setEmployee([
+        ...employee,
+        {
+          firstname: firstname,
+          surname: surname,
+          age: age,
+          position: position,
+          wage: wage,
+          country: country,
+          deaths: deaths,
+          resurrections: resurrections,
+          experience: experience,
+        },
+      ]);
+    });
+  };
+
+  const getEmployee = () => {
+    Axios.get('http://localhost:5000/employees').then((response) => {
+      setEmployee(response.data);
     });
   };
 
@@ -79,8 +99,15 @@ function App() {
           <input type="text" />
           <button onClick={addEmployee}>Submit</button>
         </Layout>
-        <div className="buttonContainer">
-          <button onClick={addEmployee}>Show Employees</button>
+        <div className="employeeContainer">
+          <button onClick={getEmployee}>Show Employees</button>
+          {employee.map((val, key) => {
+            return (
+              <div key={key} className="employees">
+                {val.firstname}
+              </div>
+            );
+          })}
         </div>
       </Container>
     </div>
