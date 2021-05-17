@@ -5,6 +5,7 @@ import Axios from 'axios';
 import './styles/App.css';
 import Navbar from './Navbar';
 import home1 from './styles/home1.png';
+// import hr from './styles/HR.png';
 
 function App() {
   const [firstname, setFirstname] = useState('');
@@ -143,45 +144,50 @@ function App() {
           />
 
           <button onClick={addEmployee}>Submit</button>
+          <button onClick={getEmployee}>Show Employees</button>
         </div>
         <div className="right">
           <img src={home1} alt="home1" id="img1" />
         </div>
       </div>
 
-      {/* <div className="employeeContainer">
-          <button onClick={getEmployee}>Show Employees</button>
-          {employee.map((val, key) => {
-            return (
-              <div className="employees">
-                {val.firstname}
-                {val.surname}
-                {val.wage}
-                <div>
-                  <input
-                    type="text"
-                    placeholder="123"
-                    onChange={(event) => setNewwage(event.target.value)}
-                  />
-                  <button
-                    onClick={() => {
-                      updateEmployeeWage(val.id);
-                    }}
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => {
-                      deleteEmployee(val.id);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </div>
+      <div className="employee-container">
+        {employee.map((val, key) => {
+          return (
+            <div className="card">
+              <div className="card-container">
+                <h3>
+                  {val.firstname} {val.surname}
+                </h3>
+                Born: {val.country} Age: {val.age}
+                <br />
+                Wage: {val.wage}
               </div>
-            );
-          })}
-        </div> */}
+              <div>
+                <input
+                  type="text"
+                  placeholder="123"
+                  onChange={(event) => setNewwage(event.target.value)}
+                />
+                <button
+                  onClick={() => {
+                    updateEmployeeWage(val.id);
+                  }}
+                >
+                  Update
+                </button>
+                <button
+                  onClick={() => {
+                    deleteEmployee(val.id);
+                  }}
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </>
   );
 }

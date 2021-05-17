@@ -10,9 +10,9 @@
 .description {
   flex: 1;
   padding-right: 5rem;
-  background-color: lightgrey;
-  margin-bottom: 100vh;
   margin-right: 10vh;
+  position: relative;
+  top: -20vh;
 }
 
 input {
@@ -33,11 +33,36 @@ input {
   background-color: lightcyan;
 }
 
-#img1 {
+.right {
   flex: 1;
   overflow: hidden;
-  width: 50%;
-  height: 50vh;
+  width: 70%;
+  height: 60vh;
   object-fit: cover;
-  margin-bottom: 100vh;
+  position: relative;
+  top: -15vh;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 24%;
+  margin: 0.5rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-container {
+  padding: 2px 16px;
+}
+
+.employee-container {
+  background-color: lightyellow;
+  width: 100%;
+  color: black;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
 }
