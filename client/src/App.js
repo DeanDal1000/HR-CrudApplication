@@ -13,6 +13,8 @@ function App() {
   const [position, setPosition] = useState(0);
   const [wage, setWage] = useState(0);
   const [country, setCountry] = useState('');
+
+  const [newWage, setNewwage] = useState(0);
   const [employee, setEmployee] = useState([]);
 
   const addEmployee = () => {
@@ -48,6 +50,31 @@ function App() {
     Axios.get('http://localhost:5000/employees').then((response) => {
       setEmployee(response.data);
     });
+  };
+
+  const updateEmployeeWage = (id) => {
+    Axios.put('http://localhost:5000/update', { wage: newWage, id: id }).then(
+      (response) => {
+        setEmployee(
+          employee.map((val) => {
+            return val.id === id
+              ? {
+                  id: val.id,
+                  firstname: val.firstname,
+                  surname: val.surname,
+                  age: val.age,
+                  position: val.position,
+                  country: val.country,
+                  deaths: val.deaths,
+                  resurrections: val.resurrections,
+                  experience: val.experience,
+                  wage: newWage,
+                }
+              : val;
+          })
+        );
+      }
+    );
   };
 
   return (
@@ -95,16 +122,36 @@ function App() {
             type="text"
             onChange={(event) => setPosition(event.target.value)}
           />
-          <label onChange={(event) => setWage(event.target.value)}>Wage</label>
-          <input type="text" />
+          <label>Wage</label>
+          <input
+            type="number"
+            onChange={(event) => setWage(event.target.value)}
+          />
+
           <button onClick={addEmployee}>Submit</button>
         </Layout>
         <div className="employeeContainer">
           <button onClick={getEmployee}>Show Employees</button>
           {employee.map((val, key) => {
             return (
-              <div key={key} className="employees">
+              <div className="employees">
                 {val.firstname}
+                {val.surname}
+                {val.wage}
+                <div>
+                  <input
+                    type="text"
+                    placeholder="123"
+                    onChange={(event) => setNewwage(event.target.value)}
+                  />
+                  <button
+                    onClick={() => {
+                      updateEmployeeWage(val.id);
+                    }}
+                  >
+                    Update
+                  </button>
+                </div>
               </div>
             );
           })}
