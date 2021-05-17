@@ -1,0 +1,43 @@
+.container {
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5rem 10rem;
+  color: white;
+  background-color: #1b1b1b;
+}
+.description {
+  flex: 1;
+  padding-right: 5rem;
+  background-color: lightgrey;
+  margin-bottom: 100vh;
+  margin-right: 10vh;
+}
+
+input {
+  width: 30%;
+  margin: 1rem;
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #666;
+  color: #23d997;
+  font-size: 14px;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+#container2 {
+  background-color: lightcyan;
+}
+
+#img1 {
+  flex: 1;
+  overflow: hidden;
+  width: 50%;
+  height: 50vh;
+  object-fit: cover;
+  margin-bottom: 100vh;
+}

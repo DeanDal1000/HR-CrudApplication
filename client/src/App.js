@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
 //Components
-import { Container, Layout } from './styles/Form.element';
+// import { Container, Layout } from './styles/Form.element';
+import './styles/App.css';
+import Navbar from './Navbar';
+import home1 from './styles/home1.png';
 
 function App() {
   const [firstname, setFirstname] = useState('');
@@ -88,59 +91,65 @@ function App() {
   };
 
   return (
-    <div>
-      <Container>
-        <Layout>
-          <label>First Name</label>
+    <>
+      <Navbar />
+      <div class="container">
+        <div className="description">
           <input
+            placeholder="First Name"
             type="text"
             onChange={(event) => setFirstname(event.target.value)}
           />
-          <label>Last Name</label>
           <input
+            placeholder="Surname"
             type="text"
             onChange={(event) => setSurname(event.target.value)}
           />
 
-          <label>Country</label>
           <input
+            placeholder="Country"
             type="text"
             onChange={(event) => setCountry(event.target.value)}
           />
-          <label>Deaths</label>
           <input
+            placeholder="Deaths"
             type="text"
             onChange={(event) => setDeaths(event.target.value)}
           />
-          <label>Resurrections</label>
           <input
+            placeholder="Resurrections"
             type="text"
             onChange={(event) => setResurrections(event.target.value)}
           />
-          <label>Age</label>
           <input
+            placeholder="Age"
             type="number"
             onChange={(event) => setAge(event.target.value)}
           />
-          <label>Experience</label>
           <input
+            placeholder="Experience"
             type="text"
             onChange={(event) => setExperience(event.target.value)}
           />
-          <label>Position</label>
           <input
+            placeholder="Position"
             type="text"
             onChange={(event) => setPosition(event.target.value)}
           />
-          <label>Wage</label>
           <input
+            placeholder="Wage"
             type="number"
             onChange={(event) => setWage(event.target.value)}
           />
 
           <button onClick={addEmployee}>Submit</button>
-        </Layout>
-        <div className="employeeContainer">
+        </div>
+        <div className="right">
+          <img src={home1} alt="home1" id="img1" />
+        </div>
+      </div>
+
+      {/* <div className="employeeContainer">
           <button onClick={getEmployee}>Show Employees</button>
           {employee.map((val, key) => {
             return (
@@ -172,9 +181,8 @@ function App() {
               </div>
             );
           })}
-        </div>
-      </Container>
-    </div>
+        </div> */}
+    </>
   );
 }
 
