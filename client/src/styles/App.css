@@ -29,10 +29,6 @@ input {
   transition: border-color 0.2s;
 }
 
-#container2 {
-  background-color: lightcyan;
-}
-
 .right {
   flex: 1;
   overflow: hidden;
@@ -59,7 +55,7 @@ input {
 }
 
 .employee-container {
-  background-color: lightyellow;
+  background-color: #1b1b1b;
   width: 100%;
   color: black;
   display: flex;

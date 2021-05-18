@@ -17,6 +17,7 @@ function App() {
   const [position, setPosition] = useState(0);
   const [wage, setWage] = useState(0);
   const [country, setCountry] = useState('');
+  const [picture, setPicture] = useState('');
 
   const [newWage, setNewwage] = useState(0);
   const [employee, setEmployee] = useState([]);

@@ -6,7 +6,7 @@ const Navbar = () => {
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
-            HR
+            Horror Resources
           </a>
         </div>
       </nav>
